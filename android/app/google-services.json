@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "588677095751",
+    "firebase_url": "https://ra7ala-ae33d-default-rtdb.firebaseio.com",
+    "project_id": "ra7ala-ae33d",
+    "storage_bucket": "ra7ala-ae33d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588677095751:android:21a3d7dddbed6a1fdeac62",
+        "android_client_info": {
+          "package_name": "com.example.ra7alah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588677095751-c6akar5mdbcv3svebfvuildbkat56lim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCQCrceYoq1q-6DCtpxFn_SEpvqAmJChs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588677095751-c6akar5mdbcv3svebfvuildbkat56lim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
