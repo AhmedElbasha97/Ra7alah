@@ -1,7 +1,10 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:get/get.dart';
 import 'package:ra7alah/models/fav_model.dart';
 import 'package:ra7alah/models/location_model.dart';
 import 'package:ra7alah/utils/services/api_service.dart';
+import 'package:ra7alah/utils/services/app_routes.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +18,10 @@ class FavoriteServices{
     return stringValue;
   }
    checkIfThereIsFavoritesToTHisUser() async {
+     var connectivityResult = await (Connectivity().checkConnectivity());
+     if (connectivityResult == ConnectivityResult.none) {
+       Get.offAndToNamed(AppRoutes.initialRoute);
+     }
      final user = await getUserIdFromCach();
      var data = await ref.child(user).once();
      return data.value;
