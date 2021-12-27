@@ -150,7 +150,7 @@ class SignupController extends GetxController {
     if(nameState){
     if(passState){
     if(emailState){
-  sinning.signUpEmail(email: emailController.text,password: passwordController.text,context: context,username: nameController.text,confirmpassword: passwordController.text);
+  sinning.signUpWithEmailandPassword(email: emailController.text,password: passwordController.text,context: context,username: nameController.text,confirmpassword: passwordController.text);
   }}}
   }
   @override

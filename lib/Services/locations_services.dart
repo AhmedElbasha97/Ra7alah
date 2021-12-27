@@ -3,7 +3,7 @@ import 'package:ra7alah/utils/services/api_service.dart';
 
 class LocationService {
   static ApiService api = ApiService();
-  static Future<List<Location>?> getCategories() async {
+  static Future<List<Location>?> getLocationsData() async {
     var data = await api.request("/govrnments.json", "GET");
     if (data != null) {
       List<Location> citys = [];

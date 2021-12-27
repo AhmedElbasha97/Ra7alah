@@ -13,7 +13,7 @@ class HomeController extends GetxController{
   }
   void fetchGovernments() async {
     loading = true;
-    var govs = await LocationService.getCategories();
+    var govs = await LocationService.getLocationsData();
     govList = govs ?? [];
     loading = false;
     update();

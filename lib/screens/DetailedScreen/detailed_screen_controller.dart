@@ -15,7 +15,7 @@ class DetailedScreenController extends GetxController {
   }
   addToFavorite(City restrunt){
     print("elmat3am ${restrunt}");
-    fav.addToFavorite(restrunt);
+    fav.addLocationToFavorite(restrunt);
     detectAddedToFavorite(restrunt.id);
   }
 
@@ -31,7 +31,7 @@ class DetailedScreenController extends GetxController {
   }
 
   removeFromId(restrauntId) async {
-   await fav.removeFromFavorite(restrauntId);
+   await fav.removeLocationFromFavorite(restrauntId);
     detectAddedToFavorite(restrauntId);
   }
 }

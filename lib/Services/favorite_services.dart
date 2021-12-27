@@ -9,18 +9,18 @@ class FavoriteServices{
   final ref = FirebaseDatabase.instance.reference().child("Favorite");
   static ApiService api = ApiService();
   List<String> ids=[];
-  getStringValuesSF() async {
+  getUserIdFromCach() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? stringValue = await prefs.getString('userid');
     return stringValue;
   }
    checkIfThereIsFavoritesToTHisUser() async {
-     final user = await getStringValuesSF();
+     final user = await getUserIdFromCach();
      var data = await ref.child(user).once();
      return data.value;
    }
-  Future<void> addToFavorite(City location) async {
-    final user = await getStringValuesSF();
+  Future<void> addLocationToFavorite(City location) async {
+    final user = await getUserIdFromCach();
     ref.child(user).child(location.id??"").set({
       'Name':location.name,
       'images':location.images,
@@ -31,26 +31,26 @@ class FavoriteServices{
     });
   }
 
-  removeFromFavorite(locationId) async {
-    final user = await getStringValuesSF();
+  removeLocationFromFavorite(locationId) async {
+    final user = await getUserIdFromCach();
     ref.child(user).child(locationId).remove();
   }
 
   detectLocationAddToFavorite(locationId) async {
-    final user = await getStringValuesSF();
+    final user = await getUserIdFromCach();
     var data = await ref.child(user).child(locationId).once();
    return data.value;
   }
-   getFavoriteID(){
+   getFavoriteIDArray(){
     return ids;
    }
 
-   setFavoriteID(String IDs){
+   setFavoriteIDInArray(String IDs){
     ids.add(IDs);
    }
 
    getFavoriteData() async {
-     var userId = await getStringValuesSF();
+     var userId = await getUserIdFromCach();
      var data = await api.request("/Favorite/$userId.json", "GET");
      if (data != []) {
        List<Favorite> favs = [];
@@ -58,7 +58,7 @@ class FavoriteServices{
        print(data.keys);
        data.keys.forEach((element) {
          print("${i}${element}");
-         setFavoriteID(element);
+         setFavoriteIDInArray(element);
        });
        data.values.forEach((element) {
          print("${i}${element}");

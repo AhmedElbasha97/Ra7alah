@@ -36,7 +36,7 @@ class favoriteScreenController extends GetxController{
     noDataToShow = false;
     loaded = true;
    favs =  await fav.getFavoriteData();
-   ids = fav.getFavoriteID();
+   ids = fav.getFavoriteIDArray();
    loaded = false;
     update();
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:ra7alah/screens/intro/intro_screen.dart';
 import 'package:ra7alah/utils/colors.dart';
 
@@ -30,8 +32,7 @@ class OfflinePage extends StatelessWidget {
                   style: TextStyle(fontSize: 18.0,color: Colors.white),
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) =>  Intro()));
+                  Get.to(Intro());
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 3.0,
