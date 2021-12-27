@@ -11,8 +11,8 @@ import 'package:ra7alah/widgets/button.dart';
 import 'detailed_screen_controller.dart';
 
 class DetailedScreen extends StatefulWidget {
-  const DetailedScreen({Key? key, required this.Restraunt, required this.comeFromFavorite}) : super(key: key);
-  final City Restraunt;
+  const DetailedScreen({Key? key, required this.location, required this.comeFromFavorite}) : super(key: key);
+  final City location;
   final bool comeFromFavorite;
 
   @override
@@ -27,13 +27,13 @@ class _DetailedScreenState extends State<DetailedScreen> {
     return WillPopScope(
             onWillPop: () async => !widget.comeFromFavorite,
       child: GetBuilder<DetailedScreenController>(
-          init: DetailedScreenController(widget.Restraunt.id),
+          init: DetailedScreenController(widget.location.id),
           builder: (controller) {
         return Scaffold(
           backgroundColor: kDarkWhiteColor,
           appBar:  AppBarWidget(color: kWhiteColor,
             hasBackButton: true,
-            title: "restraunt",
+            title: "Location",
             comeFromFavorite: widget.comeFromFavorite,
            ),
           bottomNavigationBar: Container(
@@ -49,10 +49,10 @@ class _DetailedScreenState extends State<DetailedScreen> {
               onPressed: () async {
                 await MapLauncher.showMarker(
                   mapType: MapType.google,
-                  coords: Coords(double.parse(widget.Restraunt.location??[][0]),
-                      double.parse(widget.Restraunt.location??[][1])),
-                  title: widget.Restraunt.name??"",
-                  description: "Restraunt location",
+                  coords: Coords(double.parse(widget.location.location![0]),
+                      double.parse(widget.location.location![1])),
+                  title: widget.location.name??"",
+                  description: "location",
                 );
               },
               textColor: kWhiteColor,),
@@ -75,7 +75,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                           child: Stack(
                             children: [
 
-                              widget.Restraunt.images![0] == " " ? Container(
+                              widget.location.images![0] == " " ? Container(
                                 height: Get.height * 0.3,
                                 width: double.infinity,
                                 child: Row(
@@ -100,7 +100,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                   ],
                                 ),
                               ) : Image.network(
-                                (widget.Restraunt.images![0].removeAllWhitespace),
+                                (widget.location.images![0].removeAllWhitespace),
                                 width: double.infinity,
                                 height: Get.height * 0.4,
                                 fit: BoxFit.fill,),
@@ -113,7 +113,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                     height: 100,
                                     width: Get.height*.4,
                                     child: Text(
-                                      widget.Restraunt.name??"",
+                                      widget.location.name??"",
                                       softWrap: true,
                                       overflow: TextOverflow.clip,
                                       textAlign: TextAlign.end,
@@ -121,7 +121,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
 
                                       style: extend(
                                           theme.textTheme.headline3 ?? TextStyle(),
-                                          widget.Restraunt.images![0] == " "
+                                          widget.location.images![0] == " "
                                               ? TextStyle(color: kOnSaleColor)
                                               : TextStyle(color: kWhiteColor)),
                                     ),
@@ -135,7 +135,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                             .headline5 ?? TextStyle(), const TextStyle(
                             color: kBlackColor)),),
                         SizedBox(height: 15,),
-                        Text(widget.Restraunt.description??"",maxLines: 10, style: extend(theme
+                        Text(widget.location.description??"",maxLines: 10, style: extend(theme
                             .textTheme.subtitle1 ?? TextStyle(), const TextStyle(
                             color: kBlackColor)),),
                         SizedBox(height: 15,),
@@ -143,7 +143,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                             .headline5 ?? TextStyle(), const TextStyle(
                             color: kBlackColor)),),
                         SizedBox(height: 15,),
-                            Text(widget.Restraunt.zone??"", style: extend(
+                            Text(widget.location.zone??"", style: extend(
                                 theme.textTheme.subtitle1 ?? TextStyle(),
                                 const TextStyle(color: kBlackColor)),),
                         const SizedBox(height: 15,),
@@ -151,14 +151,14 @@ class _DetailedScreenState extends State<DetailedScreen> {
                             .headline5 ?? TextStyle(), const TextStyle(
                             color: kBlackColor)),),
                         SizedBox(height: 15,),
-                        Text(widget.Restraunt.type??"", style: extend(
+                        Text(widget.location.type??"", style: extend(
                             theme.textTheme.subtitle1 ?? TextStyle(),
                             const TextStyle(color: kBlackColor)),),
                         const SizedBox(height: 15,),
                         Text("Images:", style: extend(theme.textTheme.headline5 ??
                             TextStyle(), const TextStyle(color: kBlackColor)),),
                         SizedBox(height: 15,),
-                        widget.Restraunt.images![0] == " " ? Container(
+                        widget.location.images![0] == " " ? Container(
                           height: Get.height * 0.3,
                           width: double.infinity,
                           child: Row(
@@ -186,7 +186,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                           crossAxisCount: 2,
                           padding: EdgeInsets.all(10.0),
                           childAspectRatio: 6.5 / 8.0,
-                          children: widget.Restraunt.images!.map(
+                          children: widget.location.images!.map(
                                 (img) =>
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -214,7 +214,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                           height: 48,
                           width: Get.width * 0.95,
                           backgroundColor: kPrimaryColor,
-                          onPressed: () async {controller.notDetect?controller.addToFavorite(widget.Restraunt):controller.removeFromId(widget.Restraunt.id);},
+                          onPressed: () async {controller.notDetect?controller.addToFavorite(widget.location):controller.removeFromId(widget.location.id);},
                           textColor: kWhiteColor,)
                       ],
                     ),

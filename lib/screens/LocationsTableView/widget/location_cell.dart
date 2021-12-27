@@ -55,7 +55,7 @@ class LocationCell extends StatelessWidget {
       ),
     ];
     return GestureDetector(
-      onTap: (){ comingFromFav?Get.off(DetailedScreen(Restraunt: location, comeFromFavorite: comingFromFav,)):Get.to(DetailedScreen(Restraunt: location, comeFromFavorite: comingFromFav,));},
+      onTap: (){ comingFromFav?Get.off(DetailedScreen(location: location, comeFromFavorite: comingFromFav,)):Get.to(DetailedScreen(location: location, comeFromFavorite: comingFromFav,));},
       child: Padding(
         padding: const EdgeInsets.symmetric(
             vertical: 7.0, horizontal: 16),

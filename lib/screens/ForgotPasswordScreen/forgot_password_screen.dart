@@ -45,6 +45,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                             controller: controller.emailController,
                             validator: controller.validateEmail,
                             validated: controller.emailValidated,
+                            keyboardType: TextInputType.visiblePassword,
                             icon: (controller.emailValidated)
                                 ? (controller.emailState)
                                     ? const Icon(Icons.check_rounded,

@@ -12,17 +12,17 @@ class LocationTableViewScreen extends StatefulWidget {
   const LocationTableViewScreen({Key? key, required this.locations}) : super(key: key);
   final Location locations;
   @override
-  _RestrauntTableViewScreen createState() => _RestrauntTableViewScreen();
+  _LocationTableViewScreen createState() => _LocationTableViewScreen();
 }
 
-class _RestrauntTableViewScreen extends State<LocationTableViewScreen> {
+class _LocationTableViewScreen extends State<LocationTableViewScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Scaffold(
       bottomNavigationBar: BottomNavBar(index: 0,),
-      appBar: const AppBarWidget(color: kWhiteColor,hasBackButton: true,title: "Restraunt",),
+      appBar: const AppBarWidget(color: kWhiteColor,hasBackButton: true,title: "Locations",),
       backgroundColor: kDarkWhiteColor,
       body: Center(
           child: Column(
