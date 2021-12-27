@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,6 +54,10 @@ class AuthService {
 
   signInWithEmailAndPassword(context, email, password) async {
     print(email);
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      Get.offAllNamed(AppRoutes.initialRoute);
+    }
         try {
           UserCredential userCredential = await _auth
               .signInWithEmailAndPassword(email: email, password: password);
@@ -87,6 +92,10 @@ class AuthService {
   // ignore: missing_return
  signUpWithEmailandPassword(
       {context, email, username, confirmpassword, password, type}) async {
+   var connectivityResult = await (Connectivity().checkConnectivity());
+   if (connectivityResult == ConnectivityResult.none) {
+     Get.offAllNamed(AppRoutes.initialRoute);
+   }
             try {
               UserCredential userCredential =
               await _auth.createUserWithEmailAndPassword(
@@ -112,7 +121,11 @@ class AuthService {
 
 //resetpassword
   // ignore: missing_return
-   resetPassword({email, context}) {
+   resetPassword({email, context}) async {
+     var connectivityResult = await (Connectivity().checkConnectivity());
+     if (connectivityResult == ConnectivityResult.none) {
+       Get.offAllNamed(AppRoutes.initialRoute);
+     }
       _auth.sendPasswordResetEmail(email: email);
       showAlert(context, "Your Password Has Been Reset",
           "Please Go And Check Your E-Mail");
