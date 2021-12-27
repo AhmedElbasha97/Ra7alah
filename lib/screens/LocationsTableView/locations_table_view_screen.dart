@@ -46,7 +46,7 @@ class _RestrauntTableViewScreen extends State<LocationTableViewScreen> {
                 ],
               ),
               Container(
-                height: Get.height*0.5,
+                height: Get.height*0.5-(MediaQuery.of(context).padding.bottom + 30),
                 child: ListView.builder(
                   itemCount: widget.locations.city.length,
                   itemBuilder:

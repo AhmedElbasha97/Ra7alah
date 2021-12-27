@@ -54,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
 
 
-              SizedBox(height: Get.height * 0.5,),
+              SizedBox(height: Get.height * 0.5-(MediaQuery.of(context).padding.bottom + 60),),
               RoundedCornerButton(borderRadius: 25.0,
                 title: "Sign Out",
                 hasBorder: true,
