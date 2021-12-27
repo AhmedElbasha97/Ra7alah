@@ -13,14 +13,14 @@ class DetailedScreenController extends GetxController {
     detectAddedToFavorite(id);
     super.onInit();
   }
-  addToFavorite(City restrunt){
-    print("elmat3am ${restrunt}");
-    fav.addLocationToFavorite(restrunt);
-    detectAddedToFavorite(restrunt.id);
+
+  addToFavorite(City location){
+    fav.addLocationToFavorite(location);
+    detectAddedToFavorite(location.id);
   }
 
-  detectAddedToFavorite(restrauntId) async {
-    var detect = await fav.detectLocationAddToFavorite(restrauntId);
+  detectAddedToFavorite(locationsID) async {
+    var detect = await fav.detectLocationAddToFavorite(locationsID);
     print(detect);
     if( detect != null){
       notDetect = false;
@@ -30,8 +30,9 @@ class DetailedScreenController extends GetxController {
     update();
   }
 
-  removeFromId(restrauntId) async {
-   await fav.removeLocationFromFavorite(restrauntId);
-    detectAddedToFavorite(restrauntId);
+  removeFromId(locationsId) async {
+   await fav.removeLocationFromFavorite(locationsId);
+    detectAddedToFavorite(locationsId);
   }
+
 }

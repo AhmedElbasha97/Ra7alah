@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:ra7alah/utils/colors.dart';
 import 'package:ra7alah/utils/utils.dart';
 import 'package:ra7alah/widgets/app_bar.dart';
