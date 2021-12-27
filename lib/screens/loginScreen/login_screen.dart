@@ -43,6 +43,7 @@ class LoginScreen extends StatelessWidget {
                             labelText: "Email",
                             controller: controller.emailController,
                             validator: controller.validateEmail,
+                            keyboardType: TextInputType.visiblePassword,
                             icon: (controller.emailValidated)
                                 ? (controller.emailState)
                                     ? const Icon(Icons.check_rounded,

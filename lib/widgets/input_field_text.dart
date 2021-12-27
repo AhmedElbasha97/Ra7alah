@@ -33,6 +33,7 @@ class CustomInputfield extends StatelessWidget {
     return TextFormField(
       cursorColor: theme.colorScheme.onSurface,
       obscureText: obsecure,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         fillColor: theme.colorScheme.surface,
         filled: true,
